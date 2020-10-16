@@ -1,0 +1,131 @@
+{
+  "project_info": {
+    "project_number": "597538094454",
+    "firebase_url": "https://fir-lingkung.firebaseio.com",
+    "project_id": "fir-lingkung",
+    "storage_bucket": "fir-lingkung.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:597538094454:android:3ac7034368865fe8e04e57",
+        "android_client_info": {
+          "package_name": "com.example.lingkung"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "597538094454-uffutqu3bjt3s34bfnufidnm4iifj8sg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lingkung",
+            "certificate_hash": "c7d1e6429c470f739e127b4cdbf68c69870d3507"
+          }
+        },
+        {
+          "client_id": "597538094454-0a7n8k98mmhflmbtuttet74ibjae6klm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyv2H_uMdO2_x70cF6NwFUObUiNFyrQvk"
+        },
+        {
+          "current_key": "AIzaSyAWBOemlnYaEwaRkgXapYUhojuHIJ0zIS4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "597538094454-0a7n8k98mmhflmbtuttet74ibjae6klm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:597538094454:android:449b27c249170ef7e04e57",
+        "android_client_info": {
+          "package_name": "com.example.lingkung_courier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "597538094454-g04ib2p3nli9hvg2223hbjpvf72b1tib.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lingkung_courier",
+            "certificate_hash": "c7d1e6429c470f739e127b4cdbf68c69870d3507"
+          }
+        },
+        {
+          "client_id": "597538094454-0a7n8k98mmhflmbtuttet74ibjae6klm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyv2H_uMdO2_x70cF6NwFUObUiNFyrQvk"
+        },
+        {
+          "current_key": "AIzaSyAWBOemlnYaEwaRkgXapYUhojuHIJ0zIS4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "597538094454-0a7n8k98mmhflmbtuttet74ibjae6klm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:597538094454:android:e089e3e214062d6ae04e57",
+        "android_client_info": {
+          "package_name": "com.example.lingkung_partner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "597538094454-57su5kq3eulpafl5o6e4q4mepajo6j65.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lingkung_partner",
+            "certificate_hash": "c7d1e6429c470f739e127b4cdbf68c69870d3507"
+          }
+        },
+        {
+          "client_id": "597538094454-0a7n8k98mmhflmbtuttet74ibjae6klm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyv2H_uMdO2_x70cF6NwFUObUiNFyrQvk"
+        },
+        {
+          "current_key": "AIzaSyAWBOemlnYaEwaRkgXapYUhojuHIJ0zIS4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "597538094454-0a7n8k98mmhflmbtuttet74ibjae6klm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
