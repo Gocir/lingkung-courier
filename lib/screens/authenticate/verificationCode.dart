@@ -80,12 +80,12 @@ class _VerificationCodeState extends State<VerificationCode> {
                           ]))
                     ])),
             bottomNavigationBar: Container(
-                height: 77.0,
+                height: 80.0,
                 padding: const EdgeInsets.all(16.0),
                 child: FlatButton(
-                    color: green,
+                    color: blue,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                        borderRadius: BorderRadius.circular(50)),
                     child: CustomText(
                         text: 'KONFIRMASI',
                         color: white,

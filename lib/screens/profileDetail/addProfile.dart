@@ -4,8 +4,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:image_cropper/image_cropper.dart';
-import 'package:image_picker_gallery_camera/image_picker_gallery_camera.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lingkung_courier/providers/courierProvider.dart';
 import 'package:lingkung_courier/services/courierService.dart';

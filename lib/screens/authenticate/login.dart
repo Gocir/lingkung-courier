@@ -1,6 +1,8 @@
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:lingkung_courier/models/courierModel.dart';
 import 'package:lingkung_courier/providers/courierProvider.dart';
 import 'package:lingkung_courier/screens/authenticate/register.dart';
+import 'package:lingkung_courier/services/courierService.dart';
 import 'package:lingkung_courier/utilities/colorStyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +17,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _scaffoldStateKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
+  CourierServices _courierService = CourierServices();
 
   String dialCode;
   String smsCode;
@@ -23,6 +26,8 @@ class _LoginPageState extends State<LoginPage> {
   String phoneNumber;
   String phoneNumberLogin;
   bool loading = false;
+
+  List<CourierModel> courierByPhone = [];
 
   void _onCountryChange(CountryCode countryCode) {
     //T0D0 : manipulate the selected country code here
@@ -193,28 +198,39 @@ class _LoginPageState extends State<LoginPage> {
                             SizedBox(height: 16.0),
                             Container(
                                 width: MediaQuery.of(context).size.width,
-                                height: 45.0,
+                                height: 48.0,
                                 child: FlatButton(
-                                    color: green,
+                                    color: blue,
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
-                                            BorderRadius.circular(10.0)),
+                                            BorderRadius.circular(50.0)),
                                     child: CustomText(
                                         text: "MASUK",
                                         color: white,
                                         weight: FontWeight.w700),
-                                    onPressed: () {
+                                    onPressed: () async {
                                       if (_formKey.currentState.validate()) {
                                         setState(() {
                                           loading = true;
                                         });
 
-                                        // bool value = courierProvider.courierByPhone.isEmpty;
-                                        print(phoneNumber);
-                                        // print(value);
+                                        if (phoneNumber == null &&
+                                            courierProvider.phoNumberLogin !=
+                                                null) {
+                                          phoneNumber = dialCode +
+                                              courierProvider
+                                                  .phoNumberLogin.text;
+                                        }
 
-                                        if (courierProvider
-                                            .courierByPhone.isEmpty) {
+                                        courierByPhone = await _courierService
+                                            .getCourierByPhone(
+                                                phoNumberLogin: phoneNumber);
+                                        print('phoneNumber:' + phoneNumber);
+                                        print('ubp:' +
+                                            courierByPhone.isNotEmpty
+                                                .toString());
+
+                                        if (courierByPhone.isEmpty) {
                                           setState(() {
                                             _scaffoldStateKey.currentState
                                                 .showSnackBar(SnackBar(
@@ -236,24 +252,27 @@ class _LoginPageState extends State<LoginPage> {
                                         }
                                       }
                                     })),
-                            SizedBox(height: 10.0),
+                            SizedBox(height: 8.0),
                             Center(
-                                child: CustomText(
-                                    text: 'Atau', weight: FontWeight.w600)),
-                            SizedBox(height: 10.0),
+                              child: CustomText(
+                                text: 'Atau',
+                                weight: FontWeight.w600,
+                              ),
+                            ),
+                            SizedBox(height: 8.0),
                             Container(
                                 width: MediaQuery.of(context).size.width,
-                                height: 45.0,
+                                height: 48.0,
                                 child: FlatButton(
                                     color: white,
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
-                                            BorderRadius.circular(10.0),
+                                            BorderRadius.circular(50.0),
                                         side: BorderSide(
-                                            color: green, width: 2.0)),
+                                            color: blue, width: 2.0)),
                                     child: CustomText(
                                         text: "DAFTAR",
-                                        color: green,
+                                        color: blue,
                                         weight: FontWeight.w700),
                                     onPressed: () {
                                       Navigator.push(

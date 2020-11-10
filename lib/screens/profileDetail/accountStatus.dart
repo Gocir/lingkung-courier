@@ -27,7 +27,7 @@ class _AccountStatusState extends State<AccountStatus> {
   @override
   Widget build(BuildContext context) {
     final courierProvider = Provider.of<CourierProvider>(context);
-    courierProvider.loadUserById(courierProvider.courierModel?.id);
+    // courierProvider.loadUserById(courierProvider.courierModel?.id);
     return loading
         ? Loading()
         : SafeArea(
@@ -332,16 +332,16 @@ class _AccountStatusState extends State<AccountStatus> {
                           color: white,
                           padding: const EdgeInsets.all(16.0),
                           child: FlatButton(
-                            color: green,
+                            color: blue,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(50),
                             ),
                             child: Center(
                               child: CustomText(
                                 text: (courierProvider
                                             .courierModel?.accountStatus ==
                                         "Verification Failed")
-                                    ? 'Perbaiki data usaha'
+                                    ? 'Perbaiki data pribadi'
                                     : 'LANJUT',
                                 color: white,
                                 size: 16.0,

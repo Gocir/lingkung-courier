@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:lingkung_courier/utilities/colorStyle.dart';
 import 'package:lingkung_courier/widgets/customText.dart';
 // Widgets
-import 'package:lingkung_courier/widgets/orderHistory/orderComplete.dart';
-import 'package:lingkung_courier/widgets/orderHistory/orderProgress.dart';
+import 'package:lingkung_courier/screens/orderHistory/orderComplete.dart';
+import 'package:lingkung_courier/screens/orderHistory/orderProgress.dart';
 
 class OrderHistoryPage extends StatefulWidget {
   @override

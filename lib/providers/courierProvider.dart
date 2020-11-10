@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:lingkung_courier/main.dart';
 import 'package:lingkung_courier/models/documentModel.dart';
 import 'package:lingkung_courier/models/trashReceiveModel.dart';
-import 'package:uuid/uuid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';

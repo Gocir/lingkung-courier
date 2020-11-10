@@ -11,18 +11,8 @@ class JunkSalesServices {
     _firestore.collection(collection).document(junkSales['id']).setData(junkSales);
   }
 
-  void addlistTrash(
-      {String junkSalesId, Map<String, dynamic> listTrash}) {
-    _firestore
-        .collection(collection)
-        .document(junkSalesId)
-        .collection(subCollection)
-        .document(listTrash['id'])
-        .setData(listTrash);
-  }
-  
   void updateJunkSales({Map<String, dynamic> data}) {
-    _firestore.collection(collection).document(data['id']).setData(data);
+    _firestore.collection(collection).document(data['id']).updateData(data);
   }
 
   void deleteJunkSales({String junkSalesId}) {
@@ -30,6 +20,25 @@ class JunkSalesServices {
         .collection(collection)
         .document(junkSalesId)
         .delete();
+  }
+
+  void addListTrash(
+      {String junkSalesId, Map<String, dynamic> listTrash}) {
+    _firestore
+        .collection(collection)
+        .document(listTrash['junkSalesId'])
+        .collection(subCollection)
+        .document(listTrash['id'])
+        .setData(listTrash);
+  }
+
+  void updateListTrash({String junkSalesId, Map<String, dynamic> data}) {
+    _firestore
+        .collection(collection)
+        .document(junkSalesId)
+        .collection(subCollection)
+        .document(data['id'])
+        .updateData(data);
   }
   
   Future<void> deleteListTrash({String junkSalesId, String trashItemId}) async {
@@ -58,9 +67,10 @@ class JunkSalesServices {
         return JunkSalesModel.fromSnapshot(result);
       });
 
-  Future<List<JunkSalesModel>> getJunkSalesComplete({String status}) async =>
+  Future<List<JunkSalesModel>> getJunkSalesComplete({String courierId, String status}) async =>
       _firestore
           .collection(collection)
+          .where("courierId", isEqualTo: courierId)
           .where("status", isEqualTo: status)
           .getDocuments()
           .then((result) {
@@ -72,9 +82,10 @@ class JunkSalesServices {
       });
 
   Future<List<JunkSalesModel>> getJunkSalesOnProgress(
-          {List listStatus}) async =>
+          {String courierId, List listStatus}) async =>
       _firestore
           .collection(collection)
+          .where("courierId", isEqualTo: courierId)
           .where("status", whereIn: listStatus)
           .getDocuments()
           .then((result) {
@@ -98,5 +109,56 @@ class JunkSalesServices {
           listTrashById.add(TrashCartModel.fromSnapshot(trashItem));
         }
         return listTrashById;
+      });
+
+  Future<int> getProfit({String junkSalesId}) async => _firestore
+          .collection(collection)
+          .document(junkSalesId)
+          .collection(subCollection)
+          .getDocuments()
+          .then((result) {
+        if (result.documents == null) {
+          return 0;
+        }
+        int _priceSum = 0;
+        for (DocumentSnapshot trashCart in result.documents) {
+          _priceSum += trashCart.data['price'] * trashCart.data['weight'];
+        }
+        int total = _priceSum;
+        return total;
+      });
+
+  Future<int> getTotalWeight({String junkSalesId}) async => _firestore
+          .collection(collection)
+          .document(junkSalesId)
+          .collection(subCollection)
+          .getDocuments()
+          .then((result) {
+        if (result.documents == null) {
+          return 0;
+        }
+        int _priceSum = 0;
+        for (DocumentSnapshot trashCart in result.documents) {
+          _priceSum += trashCart.data['weight'];
+        }
+        int total = _priceSum;
+        return total;
+      });
+  
+  Future<List<TrashCartModel>> getListTrashByReceive(
+          {String junkSalesId, String trashReceiveId}) async =>
+      _firestore
+          .collection(collection)
+          .document(junkSalesId)
+          .collection(subCollection)
+          .where("trashTypeId", isEqualTo: trashReceiveId)
+          .getDocuments()
+          .then((result) {
+        List<TrashCartModel> listTrashByReceives = [];
+        for (DocumentSnapshot listTrashByReceive in result.documents) {
+          listTrashByReceives
+              .add(TrashCartModel.fromSnapshot(listTrashByReceive));
+        }
+        return listTrashByReceives;
       });
 }

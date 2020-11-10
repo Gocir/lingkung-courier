@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lingkung_courier/widgets/customText.dart';
 import 'package:lingkung_courier/utilities/colorStyle.dart';
+import 'package:lingkung_courier/models/junkSalesModel.dart';
 import 'package:lingkung_courier/providers/junkSalesProvider.dart';
+import 'package:lingkung_courier/widgets/ordersCard.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class OrderListPage extends StatefulWidget {
   @override
@@ -12,6 +12,8 @@ class OrderListPage extends StatefulWidget {
 }
 
 class _OrderListPageState extends State<OrderListPage> {
+  JunkSalesModel junkSales;
+
   @override
   Widget build(BuildContext context) {
     final junkSalesProvider = Provider.of<JunkSalesProvider>(context);
@@ -39,37 +41,32 @@ class _OrderListPageState extends State<OrderListPage> {
             ),
           ],
         ),
-        body: ListView.builder(
-          scrollDirection: Axis.vertical,
-          physics: BouncingScrollPhysics(),
-          padding: const EdgeInsets.all(8.0),
-          itemCount: junkSalesProvider.junkSales.length,
-          itemBuilder: (_, index) {
-            return Card(
-              child: ListTile(
-                leading: CachedNetworkImage(
-                  imageUrl: junkSalesProvider.junkSales[index].trashImage.toString(),
-                  imageBuilder: (_, imageProvider) =>
-                      CircleAvatar(backgroundImage: imageProvider),
-                  placeholder: (_, url) => CircleAvatar(
-                    backgroundColor: Colors.grey[200],
-                    child: SpinKitThreeBounce(
-                      color: black,
-                      size: 10.0,
-                    ),
+        body: (junkSalesProvider.junkSales.isEmpty)
+            ? Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: <Widget>[
+                  Image.asset("assets/images/searching.png"),
+                  SizedBox(height: 16.0),
+                  CustomText(
+                    text:
+                        'Tunggu sebentar, kami sedang mencarikan pesanan untukmu nih...',
+                    align: TextAlign.center,
+                    weight: FontWeight.w600,
                   ),
-                  errorWidget: (_, url, error) => CircleAvatar(
-                    backgroundColor: Colors.grey[200],
-                    backgroundImage: AssetImage("assets/images/noimage.png"),
-                  ),
-                ),
-                title: CustomText(
-                  text: '${junkSalesProvider.junkSales[index].id}',
-                ),
+                ],
               ),
-            );
-          },
-        ),
+            )
+            : ListView.builder(
+                scrollDirection: Axis.vertical,
+                physics: BouncingScrollPhysics(),
+                padding: const EdgeInsets.all(8.0),
+                itemCount: junkSalesProvider.junkSales.length,
+                itemBuilder: (_, index) {
+                  junkSales = junkSalesProvider.junkSales[index];
+                  return OrdersCard(junkSales: junkSales);
+                },
+              ),
       ),
     );
   }

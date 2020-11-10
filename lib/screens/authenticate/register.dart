@@ -1,5 +1,7 @@
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:lingkung_courier/models/courierModel.dart';
 import 'package:lingkung_courier/providers/courierProvider.dart';
+import 'package:lingkung_courier/services/courierService.dart';
 import 'package:lingkung_courier/utilities/colorStyle.dart';
 import 'package:lingkung_courier/utilities/loading.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +17,7 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final _scaffoldStateKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
+  CourierServices _courierService = CourierServices();
 
   String dialCode;
   String smsCode;
@@ -22,6 +25,8 @@ class _RegisterPageState extends State<RegisterPage> {
   String errorMessage;
   String phoneNumber;
   bool loading = false;
+
+  List<CourierModel> courierByPhone = [];
 
   void _onCountryChange(CountryCode countryCode) {
     //T0D0 : manipulate the selected country code here
@@ -47,7 +52,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     final courierProvider = Provider.of<CourierProvider>(context);
-    courierProvider.loadUserByPhone(phoneNumber);
+    // courierProvider.loadUserByPhone(phoneNumber);
     return loading
         ? Loading()
         : SafeArea(
@@ -196,13 +201,13 @@ class _RegisterPageState extends State<RegisterPage> {
                                   ]),
                                 ])))),
                 bottomNavigationBar: Container(
-                    height: 77.0,
+                    height: 80.0,
                     color: white,
                     padding: const EdgeInsets.all(16.0),
                     child: FlatButton(
-                        color: green,
+                        color: blue,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(50)),
                         child: Center(
                             child: CustomText(
                                 text: 'BUAT AKUN',
@@ -214,11 +219,15 @@ class _RegisterPageState extends State<RegisterPage> {
                               loading = true;
                             });
 
-                            // bool value = courierProvider.courierByPhone.isNotEmpty;
-                            print(phoneNumber);
-                            // print(value);
+                            if (phoneNumber == null && courierProvider.phoNumberLogin != null) {
+                              phoneNumber = dialCode + courierProvider.phoNumberLogin.text;
+                            }
 
-                            if (courierProvider.courierByPhone.isNotEmpty) {
+                            courierByPhone = await _courierService.getCourierByPhone(phoNumberLogin: phoneNumber);
+                            print('phoneNumber:' + phoneNumber);
+                            print('ubp:' + courierByPhone.isNotEmpty.toString());
+
+                            if (courierByPhone.isNotEmpty) {
                               setState(() {
                                 loading = false;
                               });
@@ -273,7 +282,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           Container(
                             height: 45,
                             child: FlatButton(
-                                color: green,
+                                color: blue,
                                 shape: RoundedRectangleBorder(
                                     borderRadius:
                                         BorderRadius.circular(

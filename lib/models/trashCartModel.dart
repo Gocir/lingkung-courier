@@ -8,7 +8,7 @@ class TrashCartModel {
   static const PRICE = "price";
   static const WEIGHT = "weight";
   static const PARTNER_ID = "partnerId";
-  static const JUNK_SALES_ID = "userId";
+  static const JUNK_SALES_ID = "junkSalesId";
 
   String _id;
   String _trashTypeId;

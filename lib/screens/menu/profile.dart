@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:lingkung_courier/providers/courierProvider.dart';
 //  Screens
 import 'package:lingkung_courier/screens/authenticate/login.dart';
+import 'package:lingkung_courier/screens/sortTrash/trashSectionList.dart';
 //  Utilities
 import 'package:lingkung_courier/utilities/colorStyle.dart';
 
@@ -204,7 +205,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                             .courierModel?.courierName ==
                                         null)
                                     ? 'Hero Lingkung'
-                                    : 'BS. ${courierProvider.courierModel?.courierName}',
+                                    : '${courierProvider.courierModel?.courierName}',
                                 over: TextOverflow.fade,
                                 size: 18,
                                 weight: FontWeight.w700,
@@ -214,14 +215,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                         null)
                                     ? 'email@domain.hosting'
                                     : '${courierProvider.courierModel?.email}',
-                                color: white,
+                                color: grey,
                                 size: 12,
                               ),
                               CustomText(
                                 text:
                                     '${courierProvider.courier?.phoneNumber}' ??
                                         '',
-                                color: white,
+                                color: grey,
                                 size: 12,
                               ),
                             ],
@@ -277,36 +278,31 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ),
                                     dense: true,
                                     onTap: () {
-                                      // Navigator.push(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //       builder: (context) =>
-                                      //           TrashReceivePage(
-                                      //               courierModel: courierProvider
-                                      //                   .courierModel),
-                                      //     ),);
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                TrashSectionList(),
+                                          ),);
                                     },
                                   ),
                                   ListTile(
+                                    dense: true,
                                     leading: Image.asset(
-                                        "assets/icons/operationalColor.png"),
+                                        "assets/icons/helpsColor.png"),
                                     title: CustomText(
-                                      text: 'Jam Operasional',
+                                      text: 'Bantuan',
                                       weight: FontWeight.w500,
                                     ),
                                     trailing: Icon(
                                       Icons.chevron_right,
                                       color: grey,
                                     ),
-                                    dense: true,
                                     onTap: () {
-                                      // timeProvider.loadOperationalTime();
                                       // Navigator.push(
                                       //     context,
                                       //     MaterialPageRoute(
-                                      //       builder: (context) => OperationalTime(
-                                      //           courierModel: courierProvider
-                                      //               .courierModel),
+                                      //       builder: (context) => HelpFeatureList(),
                                       //     ));
                                     },
                                   ),
@@ -357,46 +353,6 @@ class _ProfilePageState extends State<ProfilePage> {
                               children: ListTile.divideTiles(
                                 context: context,
                                 tiles: [
-                                  ListTile(
-                                    dense: true,
-                                    leading: Image.asset(
-                                        "assets/icons/helpsColor.png"),
-                                    title: CustomText(
-                                      text: 'Bantuan',
-                                      weight: FontWeight.w500,
-                                    ),
-                                    trailing: Icon(
-                                      Icons.chevron_right,
-                                      color: grey,
-                                    ),
-                                    onTap: () {
-                                      // Navigator.push(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //       builder: (context) => HelpFeatureList(),
-                                      //     ));
-                                    },
-                                  ),
-                                  ListTile(
-                                    dense: true,
-                                    leading: Image.asset(
-                                        "assets/icons/contactColor.png"),
-                                    title: CustomText(
-                                      text: 'Hubungi Kami',
-                                      weight: FontWeight.w500,
-                                    ),
-                                    trailing: Icon(
-                                      Icons.chevron_right,
-                                      color: grey,
-                                    ),
-                                    onTap: () {
-                                      // Navigator.push(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //       builder: (context) => ContactUs(),
-                                      //     ));
-                                    },
-                                  ),
                                   ListTile(
                                     dense: true,
                                     leading: Image.asset(
@@ -457,10 +413,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                           SizedBox(height: 16.0),
                           Container(
-                            height: 45.0,
-                            child: RaisedButton(
-                              color: green,
-                              elevation: 2.0,
+                            height: 48.0,
+                            child: FlatButton(
+                              color: blue,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
@@ -472,14 +427,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                   weight: FontWeight.w700,
                                 ),
                               ),
-                              onPressed: () async {
-                                await courierProvider.logout();
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoginPage(),
-                                  ),
-                                );
+                              onPressed: () {
+                                _closeModalBottomSheet(context);
                               },
                             ),
                           ),
@@ -577,6 +526,109 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ),
       ),
+    );
+  }
+
+  void _closeModalBottomSheet(context) {
+    final courierProvider = Provider.of<CourierProvider>(context, listen: false);
+    showModalBottomSheet<void>(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20.0),
+          topRight: Radius.circular(20.0),
+        ),
+      ),
+      context: context,
+      builder: (BuildContext context) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.close),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.width / 2.2,
+                    alignment: Alignment.center,
+                    child: Image.asset("assets/images/verifailed.png"),
+                  ),
+                  SizedBox(height: 16.0),
+                  CustomText(
+                    text: 'Yakin kamu ingin keluar dari aplikasi?',
+                    size: 18.0,
+                    weight: FontWeight.w700,
+                  ),
+                  SizedBox(height: 16.0),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(
+                          height: 48,
+                          child: OutlineButton(
+                            color: blue,
+                            highlightedBorderColor: blue,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            borderSide: BorderSide(
+                              color: blue,
+                              width: 2.5,
+                            ),
+                            child: CustomText(
+                              text: 'TIDAK',
+                              color: blue,
+                              size: 16.0,
+                              weight: FontWeight.w700,
+                            ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 16.0),
+                      Expanded(
+                        child: Container(
+                          height: 48,
+                          child: FlatButton(
+                            color: blue,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            child: CustomText(
+                              text: 'YA',
+                              color: white,
+                              size: 16.0,
+                              weight: FontWeight.w700,
+                            ),
+                            onPressed: () async {
+                              await courierProvider.logout();
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginPage(),
+                                  ),
+                                );
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -74,17 +74,17 @@ class _AddDocumentState extends State<AddDocument> {
                             child: OutlineButton(
                               color: white,
                               highlightColor: white,
-                              highlightedBorderColor: green,
+                              highlightedBorderColor: blue,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               borderSide: BorderSide(
-                                color: green,
+                                color: blue,
                                 width: 1.5,
                               ),
                               child: CustomText(
                                 text: 'UNGGAH',
-                                color: green,
+                                color: blue,
                                 size: 12.0,
                                 weight: FontWeight.w700,
                               ),
@@ -111,17 +111,17 @@ class _AddDocumentState extends State<AddDocument> {
                             child: OutlineButton(
                               color: white,
                               highlightColor: white,
-                              highlightedBorderColor: green,
+                              highlightedBorderColor: blue,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               borderSide: BorderSide(
-                                color: green,
+                                color: blue,
                                 width: 1.5,
                               ),
                               child: CustomText(
                                 text: 'UNGGAH',
-                                color: green,
+                                color: blue,
                                 size: 12.0,
                                 weight: FontWeight.w700,
                               ),
@@ -148,17 +148,17 @@ class _AddDocumentState extends State<AddDocument> {
                             child: OutlineButton(
                               color: white,
                               highlightColor: white,
-                              highlightedBorderColor: green,
+                              highlightedBorderColor: blue,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               borderSide: BorderSide(
-                                color: green,
+                                color: blue,
                                 width: 1.5,
                               ),
                               child: CustomText(
                                 text: 'UNGGAH',
-                                color: green,
+                                color: blue,
                                 size: 12.0,
                                 weight: FontWeight.w700,
                               ),
@@ -185,17 +185,17 @@ class _AddDocumentState extends State<AddDocument> {
                             child: OutlineButton(
                               color: white,
                               highlightColor: white,
-                              highlightedBorderColor: green,
+                              highlightedBorderColor: blue,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               borderSide: BorderSide(
-                                color: green,
+                                color: blue,
                                 width: 1.5,
                               ),
                               child: CustomText(
                                 text: 'UNGGAH',
-                                color: green,
+                                color: blue,
                                 size: 12.0,
                                 weight: FontWeight.w700,
                               ),
@@ -217,7 +217,7 @@ class _AddDocumentState extends State<AddDocument> {
                 height: 45.0,
                 margin: EdgeInsets.all(16.0),
                 child: FlatButton(
-                  color: green,
+                  color: blue,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -293,7 +293,7 @@ class _AddDocumentState extends State<AddDocument> {
                             ),
                             child: Icon(
                               Icons.check_circle,
-                              color: green,
+                              color: blue,
                             ),
                           ),
                         ],
@@ -345,7 +345,7 @@ class _AddDocumentState extends State<AddDocument> {
                     height: 45.0,
                     color: white,
                     child: FlatButton(
-                      color: green,
+                      color: blue,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -427,7 +427,7 @@ class _AddDocumentState extends State<AddDocument> {
                             ),
                             child: Icon(
                               Icons.check_circle,
-                              color: green,
+                              color: blue,
                             ),
                           ),
                         ],
@@ -479,7 +479,7 @@ class _AddDocumentState extends State<AddDocument> {
                     height: 45.0,
                     color: white,
                     child: FlatButton(
-                      color: green,
+                      color: blue,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -561,7 +561,7 @@ class _AddDocumentState extends State<AddDocument> {
                             ),
                             child: Icon(
                               Icons.check_circle,
-                              color: green,
+                              color: blue,
                             ),
                           ),
                         ],
@@ -613,7 +613,7 @@ class _AddDocumentState extends State<AddDocument> {
                     height: 45.0,
                     color: white,
                     child: FlatButton(
-                      color: green,
+                      color: blue,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -695,7 +695,7 @@ class _AddDocumentState extends State<AddDocument> {
                             ),
                             child: Icon(
                               Icons.check_circle,
-                              color: green,
+                              color: blue,
                             ),
                           ),
                         ],
@@ -747,7 +747,7 @@ class _AddDocumentState extends State<AddDocument> {
                     height: 45.0,
                     color: white,
                     child: FlatButton(
-                      color: green,
+                      color: blue,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
