@@ -55,40 +55,40 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
               ),
               tabs: _kTabs,
             ),
-            flexibleSpace: Row(
-              children: <Widget>[
-                Transform.translate(
-                  offset: Offset(-14.23, 23.85),
-                  child:
-                      // Adobe XD layer: 'grass1' (shape)
-                      Container(
-                    width: 118.0,
-                    height: 85.0,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/grass3.png"),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                ),
-                Transform.translate(
-                  offset: Offset(150, -10.93),
-                  child:
-                      // Adobe XD layer: 'grass2' (shape)
-                      Container(
-                    width: 133.0,
-                    height: 149.0,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/grass222.png"),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            // flexibleSpace: Row(
+            //   children: <Widget>[
+            //     Transform.translate(
+            //       offset: Offset(-14.23, 23.85),
+            //       child:
+            //           // Adobe XD layer: 'grass1' (shape)
+            //           Container(
+            //         width: 118.0,
+            //         height: 85.0,
+            //         decoration: BoxDecoration(
+            //           image: DecorationImage(
+            //             image: AssetImage("assets/images/grass3.png"),
+            //             fit: BoxFit.fill,
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //     Transform.translate(
+            //       offset: Offset(150, -10.93),
+            //       child:
+            //           // Adobe XD layer: 'grass2' (shape)
+            //           Container(
+            //         width: 133.0,
+            //         height: 149.0,
+            //         decoration: BoxDecoration(
+            //           image: DecorationImage(
+            //             image: AssetImage("assets/images/grass222.png"),
+            //             fit: BoxFit.fill,
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //   ],
+            // ),
           ),
           body: TabBarView(children: _kPages),
         ),
