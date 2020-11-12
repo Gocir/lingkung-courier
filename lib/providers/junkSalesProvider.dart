@@ -215,8 +215,8 @@ class JunkSalesProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  loadJunkSalesComplete(CourierModel courierModel) async {
-    junkSalesComplete = await _junkSalesService.getJunkSalesComplete(courierId: courierModel.id, status: "Complete Orders");
+  loadJunkSalesComplete(String courierId) async {
+    junkSalesComplete = await _junkSalesService.getJunkSalesComplete(courierId: courierId, status: "Complete Orders");
     notifyListeners();
   }
   

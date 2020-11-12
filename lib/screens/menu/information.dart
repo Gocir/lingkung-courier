@@ -72,7 +72,7 @@ class _InformationsPageState extends State<InformationsPage> {
                   padding: const EdgeInsets.only(bottom: 10.0),
                   child: CupertinoSlidingSegmentedControl(
                     children: _type,
-                    thumbColor: green,
+                    thumbColor: blue,
                     groupValue: _selectedIndexValue,
                     onValueChanged: onValueChanged),
                 ),

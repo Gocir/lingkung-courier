@@ -16,7 +16,7 @@ class OrderComplete extends StatelessWidget {
     final courierProvider = Provider.of<CourierProvider>(context);
     final junkSalesProvider = Provider.of<JunkSalesProvider>(context);
     final partnerProvider = Provider.of<PartnerProvider>(context);
-    junkSalesProvider.loadJunkSalesComplete(courierProvider.courierModel);
+    junkSalesProvider.loadJunkSalesComplete(courierProvider.courierModel.id);
 
     return (junkSalesProvider.junkSalesComplete.isEmpty) ? Padding(
             padding: const EdgeInsets.all(16.0),
