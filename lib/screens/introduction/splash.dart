@@ -18,11 +18,11 @@ class _SplashState extends State<Splash> {
 
         if (_seen) {
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => Wrapper()));
+            MaterialPageRoute(builder: (context) => Wrapper(),),);
         } else {
         await prefs.setBool('seen', true);
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => Onboarding()));
+            MaterialPageRoute(builder: (context) => Onboarding(),),);
         }
     }
 

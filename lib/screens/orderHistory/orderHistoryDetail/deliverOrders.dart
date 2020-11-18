@@ -55,21 +55,7 @@ class _DeliverOrdersState extends State<DeliverOrders> {
                 elevation: 0,
                 iconTheme: IconThemeData(color: black),
                 automaticallyImplyLeading: false,
-                title: Stack(
-                  children: [
-                    Image.asset('assets/images/logos.png', height: 35.0),
-                    Positioned(
-                      left: 51.0,
-                      top: 23.5,
-                      child: CustomText(
-                        text: 'courier',
-                        color: blue,
-                        size: 10.0,
-                        weight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
+                title: Image.asset('assets/images/logos.png', height: 35.0),
               ),
               body: SingleChildScrollView(
                 physics: BouncingScrollPhysics(),

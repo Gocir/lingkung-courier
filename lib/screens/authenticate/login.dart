@@ -63,21 +63,7 @@ class _LoginPageState extends State<LoginPage> {
               backgroundColor: white,
               elevation: 0,
               automaticallyImplyLeading: false,
-              title: Stack(
-                children: [
-                  Image.asset('assets/images/logos.png', height: 35.0),
-                  Positioned(
-                    left: 51.0,
-                    top: 23.5,
-                    child: CustomText(
-                      text: 'courier',
-                      color: blue,
-                      size: 10.0,
-                      weight: FontWeight.w700,
-                    ),
-                  ),
-                ],
-              ),
+              title: Image.asset('assets/images/logos.png', height: 35.0),
               actions: [
                 IconButton(
                   icon: Icon(Icons.help_outline, color: black),
